@@ -1,5 +1,4 @@
-import typing as T
-from collections import defaultdict
+"""Observable module"""
 
 from pyobserv import Observer
 
@@ -13,7 +12,7 @@ class Observable:
     by the observer.
     """
 
-    def __init__(self, *args, **kwargs) -> None:
+    def __init__(self) -> None:
         self.observers = []
 
     def add_observer(self, observer: Observer) -> bool:
@@ -64,4 +63,6 @@ class Observable:
         :return: None
         """
         for observer in self.observers:
-            observer._on_trigger(event, *args, **kwargs)
+            observer._on_trigger(  # pylint: disable=protected-access
+                event, *args, **kwargs
+            )

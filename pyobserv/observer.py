@@ -1,3 +1,5 @@
+"""Observer Module"""
+
 from collections import defaultdict
 import typing as T
 
@@ -9,7 +11,7 @@ class Observer:
     given event match the callbacks registered functions args for that event.
     """
 
-    def __init__(self, *args, **kwargs) -> None:
+    def __init__(self) -> None:
         self._event_callbacks: T.Dict[str, T.List[T.Callable]] = defaultdict(
             list
         )
@@ -63,7 +65,7 @@ class Observer:
         return True
 
     def unregister_event_or_cb(
-        self, event: str = "", *callbacks: T.Callable
+        self, event: str, *callbacks: T.Callable
     ) -> None:
         """
         Will unregister all events and callbacks if event is None or false,

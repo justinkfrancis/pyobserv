@@ -129,7 +129,7 @@ To unregister all callbacks for an event pass the event name:
 To unregister all callbacks for all events pass no arguments:
 
 ```python
-observer.unregister_event_or_cb()
+observer.unregister_event_or_cb(event='')
 ```
 
 ## Usage of observable.Observable

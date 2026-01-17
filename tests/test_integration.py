@@ -15,7 +15,6 @@ def test_creation_and_trigger():
                 self.trigger_observers(self.name, self.value)
                 time.sleep(0.01)
 
-
     class Subscriber2x(Observer):
         def __init__(self):
             super().__init__()
@@ -34,7 +33,6 @@ def test_creation_and_trigger():
         def callback(self, data):
             self.new_value = data * 3
 
-
     sensor = Sensor()
     subscriber = Subscriber2x()
     subscriber2 = Subscriber3x()
@@ -47,27 +45,28 @@ def test_creation_and_trigger():
     sensor.run()
     assert subscriber.new_value == 20
     assert subscriber2.new_value == 30
-    assert subscriber.history == [1,2,3,4,5,6,7,8,9,10]
-    
+    assert subscriber.history == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+
 def test_threaded_observable():
     class Sensor(Observable):
         def __init__(self):
             super().__init__()
             self.value = 0
             self.value2 = 0
-            
+
         def run(self):
             for i in range(10):
                 self.value += 1
                 self.trigger_observers("value1", self.value)
                 time.sleep(0.01)
-        
+
         def run2(self):
             for i in range(10):
                 self.value2 += 2
                 self.trigger_observers("value2", self.value2)
                 time.sleep(0.01)
-                
+
     class Subscriber(Observer):
         def __init__(self):
             super().__init__()
@@ -84,8 +83,8 @@ def test_threaded_observable():
     subscriber = Subscriber()
     sensor.add_observer(subscriber)
 
-    subscriber.register_event_and_cb('value1', subscriber.callback)
-    subscriber.register_event_and_cb('value2', subscriber.callback2)
+    subscriber.register_event_and_cb("value1", subscriber.callback)
+    subscriber.register_event_and_cb("value2", subscriber.callback2)
 
     import threading
 
@@ -100,6 +99,7 @@ def test_threaded_observable():
     assert subscriber.new_value == 20
     assert subscriber.new_value2 == 60
 
+
 def test_two_kwargs():
     class Sensor(Observable):
         def __init__(self):
@@ -108,8 +108,7 @@ def test_two_kwargs():
 
         def run(self):
             self.value = 1
-            self.trigger_observers(event='sensor', data=self.value)
-
+            self.trigger_observers(event="sensor", data=self.value)
 
     class Subscriber(Observer):
         def __init__(self):
@@ -122,11 +121,12 @@ def test_two_kwargs():
     sensor = Sensor()
     subscriber = Subscriber()
     sensor.add_observer(subscriber)
-    subscriber.register_event_and_cb('sensor', subscriber.callback)
+    subscriber.register_event_and_cb("sensor", subscriber.callback)
 
     sensor.run()
 
     assert subscriber.new_value == 2
+
 
 def test_no_inheritance():
     observer = Observer()
@@ -141,15 +141,3 @@ def test_no_inheritance():
     observable.trigger_observers("event", data=1)
 
     assert observer.data == 2
-
-
-
-
-
-
-
-
-
-
-
-

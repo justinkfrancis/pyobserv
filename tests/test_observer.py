@@ -287,7 +287,7 @@ def test_remove_callbacks():
     assert observer.get_all_callbacks("test2") == []
     assert observer.get_all_callbacks("test3") == [foobar2]
 
-    observer.unregister_event_or_cb()
+    observer.unregister_event_or_cb(event="")
     assert observer.get_all_events() == []
 
 
