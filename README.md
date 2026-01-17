@@ -1,17 +1,17 @@
 # PyObserv [er/able]
 
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
+![CI](https://github.com/justinKfrancis/pyobserv/actions/workflows/python-package.yml/badge.svg)  ![CI](https://github.com/justinKfrancis/pyobserv/actions/workflows/pylint.yml/badge.svg)  [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)  
+
 
 PyObserv is a simple python library for implementing the Observerable 
 design pattern to trigger one or more callback functions for an event.  One 
 difference to other common implementations is that it separates the 
 `Observable` class which manages list of observers and notifying them of 
 events and the `Observer` class which registers callback functions to 
-events. The observable class also has an option to create a data queue, 
-this is so data can be managed in seperate threads. One core use for this 
-library is to integrate sensors with ROS2 ensuring that all data from a sensor 
-is published, rather than using a timer to get and publish sensor data (see 
-ROS2 executor friendly implementation below).
+events. One core use for this library is to integrate sensors with ROS2 
+ensuring that all data from a sensor is published, rather than using a 
+timer to get and publish sensor data (see ROS2 executor friendly 
+implementation below).
 
 ```python
 from pyobserv import Observer, Observable
@@ -38,7 +38,7 @@ pip install pyobserv
 
 # How to use
 
-Create a Observer and Observable class and add the observable.
+Create a Observer and Observable class:
 
 ```python
 from pyobserv import Observer, Observable
@@ -52,7 +52,7 @@ observable = Observable()
 
 ### `register_event_and_cb`: 
 
-You can register the callback function for a given event in one of two ways.
+You can register the callback function for a given event in one of two ways:
 
 #### Decorator:
 
