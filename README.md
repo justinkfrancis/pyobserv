@@ -1,6 +1,6 @@
 # PyObserv [er/able]
 
-![CI](https://github.com/justinKfrancis/pyobserv/actions/workflows/python-package.yml/badge.svg)  ![CI](https://github.com/justinKfrancis/pyobserv/actions/workflows/pylint.yml/badge.svg)  [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)  
+![CI](https://github.com/justinKfrancis/pyobserv/actions/workflows/python-package.yml/badge.svg)  ![CI](https://github.com/justinKfrancis/pyobserv/actions/workflows/pylint.yml/badge.svg) ![CI](https://github.com/justinKfrancis/pyobserv/actions/workflows/ros-example.yml/badge.svg) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)  
 
 
 PyObserv is a simple python library for implementing the Observerable 
