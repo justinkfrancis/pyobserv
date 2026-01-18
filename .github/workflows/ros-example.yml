@@ -1,0 +1,33 @@
+name: ROS2 Example
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup ROS 2
+      uses: ros-tooling/setup-ros@v0.7
+      with:
+        required-ros-distributions: humble
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pylint black
+        pip install .
+    - name: Analysing the code with pylint
+      run: |
+        source /opt/ros/humble/setup.bash
+        pylint examples/ros_example.py
+    - name: Run ROS Example
+      run: |
+        source /opt/ros/humble/setup.bash
+        python3 examples/ros_example.py
+        python3 examples/ros_example.py
+    
+        

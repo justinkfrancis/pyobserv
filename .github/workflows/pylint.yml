@@ -1,6 +1,10 @@
 name: Pylint and Black
 
-on: [push]
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -24,4 +28,5 @@ jobs:
     - name: Checking black formatting
       run: |
         black --check --safe --line-length=78 --target-version=py312 $(git ls-files 'pyobserv/*.py')
+        black --check --safe --line-length=78 --target-version=py312 $(git ls-files 'examples/*.py')
         
