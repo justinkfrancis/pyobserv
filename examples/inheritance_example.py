@@ -3,7 +3,7 @@
 from pyobserv import Observable, Observer
 
 
-class Sensor(Observable): # pylint: disable=too-few-public-methods
+class Sensor(Observable):  # pylint: disable=too-few-public-methods
     """Mock Sensor class that inherits Observable class"""
 
     def __init__(self):
